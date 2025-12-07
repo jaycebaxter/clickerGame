@@ -19,56 +19,85 @@ public class Mining : MonoBehaviour
     public GameObject miningButton;
 
     public GameObject GEImage;
+    public GameObject miningImage;
 
     public void ShowOres() {
         copperButton.SetActive(true);
-        // ironButton.SetActive(true);
-        // silverButton.SetActive(true);
-        // coalButton.SetActive(true);
-        // goldButton.SetActive(true);
-        // mithrilButton.SetActive(true);
-        // adamantiteButton.SetActive(true);
-        // runiteButton.SetActive(true);
-        // amethystButton.SetActive(true);
-
         GEImage.SetActive(false);
+        miningImage.SetActive(true);
+    }
+
+    public void Unlock() {
+    if (gameEvents.GetMiningLevel() >=15) {
+        ironButton.SetActive(true);
+    }
+
+    if (gameEvents.GetMiningLevel() >=20) {
+            silverButton.SetActive(true);
+    }
+
+    if (gameEvents.GetMiningLevel() >=30) {
+            coalButton.SetActive(true);
+    }
+
+    if (gameEvents.GetMiningLevel() >=40) {
+            goldButton.SetActive(true);
+    }
+
+    if (gameEvents.GetMiningLevel() >=55) {
+            mithrilButton.SetActive(true);
+    }
+
+    if (gameEvents.GetMiningLevel() >=70) {
+            adamantiteButton.SetActive(true);
+    }
+
+    if (gameEvents.GetMiningLevel() >=85) {
+            runiteButton.SetActive(true);
+    }
+
+    if (gameEvents.GetMiningLevel() >=92) {
+            amethystButton.SetActive(true);
+    }
     }
 
     public void CopperClicked()
     {
-        gameEvents.AddXP(17.5f);
+        gameEvents.AddMiningXP(17.5f);
     }
 
     public void IronClicked()
     {
-        gameEvents.AddXP(35f);
+        gameEvents.AddMiningXP(35f);
     }
 
     public void SilverClicked() {
-        gameEvents.AddXP(40f);
+        gameEvents.AddMiningXP(40f);
     }
 
     public void CoalClicked() {
-        gameEvents.AddXP(50f);
+        gameEvents.AddMiningXP(50f);
     }
     
     public void GoldClicked() {
-        gameEvents.AddXP(65f);
+        gameEvents.AddMiningXP(65f);
     }
 
     public void MithrilClicked() {
-        gameEvents.AddXP(80f);
+        gameEvents.AddMiningXP(80f);
     }
 
     public void AdamantiteClicked() {
-        gameEvents.AddXP(95f);
+        gameEvents.AddMiningXP(95f);
     }
 
     public void RuniteClicked() {
-        gameEvents.AddXP(125f);
+        gameEvents.AddMiningXP(125f);
     }
 
     public void AmethystClicked() {
-        gameEvents.AddXP(240f);
+        gameEvents.AddMiningXP(240f);
     }
+
+    
 }

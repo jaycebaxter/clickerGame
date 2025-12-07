@@ -10,6 +10,9 @@ public class GameEvents : MonoBehaviour
 
     public GameObject levelUpButton;
     public Text levelUpText;
+    public GameObject miningLevelImage;
+    public GameObject agilityLevelImage;
+    public GameObject woodcuttingLevelImage;
 
     public Text miningLevelLabel;
     public Text miningXPLabel;
@@ -25,6 +28,7 @@ public class GameEvents : MonoBehaviour
     private int miningLevel = 1;
     private int agilityLevel = 1;
     private int woodcuttingLevel = 1;
+    private int lastAgilityLvl = 0;
 
     private static float baseMiningXP = 83f;
     private static float baseAgilityXP = 83f;
@@ -33,6 +37,9 @@ public class GameEvents : MonoBehaviour
     private float nextAgilityXP = baseAgilityXP;
     private float nextWoodcuttingXP = baseWoodcuttingXP;
     private float growth = 1.1040895f;
+    private int lastWoodcuttingLvl= 0;
+    private int lastMiningLvl = 0;
+
 
     public Mining mining;
     public Agility agility;
@@ -115,10 +122,13 @@ public class GameEvents : MonoBehaviour
         miningLevelLabel.text = "Mining Level: " + miningLevel;
 
         
-        if (miningLevel % 10 == 0 || miningLevel == 99) {
+        if ((miningLevel % 10 == 0 || miningLevel == 99) && miningLevel != lastMiningLvl) {
             levelUpButton.SetActive(true);
+            miningLevelImage.SetActive(true);
             levelUpText.text = "Congratulations, you just advanced a Mining level. \n" + 
-            "Your Mining level is now " + miningLevel + ".";
+            "Your Mining level is now " + miningLevel + ". \n" +
+            "Click here to continue.";
+            lastMiningLvl = miningLevel;
         }
     }
 
@@ -141,10 +151,13 @@ public class GameEvents : MonoBehaviour
         agilityLevelLabel.text = "Agility Level: " + agilityLevel;
 
         
-        if (agilityLevel % 10 == 0 || agilityLevel == 99) {
+        if ((agilityLevel % 10 == 0 || agilityLevel == 99) && agilityLevel != lastAgilityLvl) {
             levelUpButton.SetActive(true);
+            agilityLevelImage.SetActive(true);
             levelUpText.text = "Congratulations, you just advanced an Agility level. \n" + 
-            "Your Agility level is now " + agilityLevel + ".";
+            "Your Agility level is now " + agilityLevel + ". \n" +
+            "Click here to continue.";
+            lastAgilityLvl = agilityLevel;
         }
     }
 
@@ -166,10 +179,13 @@ public class GameEvents : MonoBehaviour
         woodcuttingLevel = newWoodcuttingLevel;
         woodcuttingLevelLabel.text = "Woodcutting Level: " + woodcuttingLevel;
 
-        if (woodcuttingLevel % 10 == 0 || woodcuttingLevel == 99) {
+        if ((woodcuttingLevel % 10 == 0 || woodcuttingLevel == 99) && woodcuttingLevel != lastWoodcuttingLvl) {
             levelUpButton.SetActive(true);
+            woodcuttingLevelImage.SetActive(true);
             levelUpText.text = "Congratulations, you just advanced a Woodcutting level. \n" + 
-            "Your Woodcutting level is now " + woodcuttingLevel + ".";
+            "Your Woodcutting level is now " + woodcuttingLevel + ". \n" +
+            "Click here to continue.";
+            lastWoodcuttingLvl = woodcuttingLevel;
         }
 
         Debug.Log("Woodcutting XP: " + woodcuttingXP + " Level: " + woodcuttingLevel);
@@ -179,4 +195,10 @@ public class GameEvents : MonoBehaviour
         return woodcuttingLevel;
     }
 
+    public void CloseLevelUpButton() {
+        levelUpButton.SetActive(false);
+        miningLevelImage.SetActive(false);
+        agilityLevelImage.SetActive(false);
+        woodcuttingLevelImage.SetActive(false);
+    }
 }

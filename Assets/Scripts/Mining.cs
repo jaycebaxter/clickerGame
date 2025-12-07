@@ -4,6 +4,15 @@ public class Mining : MonoBehaviour
 {
     public GameEvents gameEvents;
 
+    public GameObject agilityButton;
+    public GameObject woodcuttingButton;
+    public GameObject miningButton;
+    
+    public GameObject GEImage;
+    public GameObject miningImage;
+    public GameObject agilityImage;
+    public GameObject woodcuttingImage;
+
     public GameObject copperButton;
     public GameObject ironButton;
     public GameObject silverButton;
@@ -14,20 +23,39 @@ public class Mining : MonoBehaviour
     public GameObject runiteButton;
     public GameObject amethystButton;
 
-    public GameObject agilityButton;
-    public GameObject woodcuttingButton;
-    public GameObject miningButton;
+    public Agility agility;
+    public Woodcutting woodcutting;
 
-    public GameObject GEImage;
-    public GameObject miningImage;
+    public void Start() {
+        HideOres();
+        agility.HideRooftops();
+        woodcutting.HideTrees();
+    }
 
     public void ShowOres() {
         copperButton.SetActive(true);
         GEImage.SetActive(false);
+        agilityImage.SetActive(false);
+        woodcuttingImage.SetActive(false);
         miningImage.SetActive(true);
+        agility.HideRooftops();
+        woodcutting.HideTrees();
+        UnlockOres();
     }
 
-    public void Unlock() {
+    public void HideOres() {
+        copperButton.SetActive(false);
+        ironButton.SetActive(false);
+        silverButton.SetActive(false);
+        coalButton.SetActive(false);
+        goldButton.SetActive(false);
+        mithrilButton.SetActive(false);
+        adamantiteButton.SetActive(false);
+        runiteButton.SetActive(false);
+        amethystButton.SetActive(false);
+    }
+
+    public void UnlockOres() {
     if (gameEvents.GetMiningLevel() >=15) {
         ironButton.SetActive(true);
     }

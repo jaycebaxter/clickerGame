@@ -11,6 +11,7 @@ public class Agility : MonoBehaviour
     public GameObject GEImage;
     public GameObject miningImage;
     public GameObject rooftopImage;
+    public GameObject woodcuttingImage;
 
     public GameObject draynorButton;
     public GameObject alKharidButton;
@@ -22,23 +23,116 @@ public class Agility : MonoBehaviour
     public GameObject rellekkaButton;
     public GameObject ardougneButton;
 
+    public Mining mining;
+    public Woodcutting woodcutting;
+
+    public void Start() {
+        HideRooftops();
+        mining.HideOres();
+        woodcutting.HideTrees();
+    }
+
     public void ShowRooftops() {
         GEImage.SetActive(false);
+        miningImage.SetActive(false);
+        woodcuttingImage.SetActive(false);
         rooftopImage.SetActive(true);
         draynorButton.SetActive(true);
+        mining.HideOres();
+        woodcutting.HideTrees();
+        UnlockRooftops();
+    }
+
+    public void HideRooftops() {
+        draynorButton.SetActive(false);
+        alKharidButton.SetActive(false);
+        varrockButton.SetActive(false);
+        canifisButton.SetActive(false);
+        faladorButton.SetActive(false);
+        seersButton.SetActive(false);
+        pollnivButton.SetActive(false);
+        rellekkaButton.SetActive(false);
+        ardougneButton.SetActive(false);
     }
 
 
-    public void Unlock() {
-    if (gameEvents.GetAgilityLevel() >=20) {
-        alKharidButton.SetActive(true);
-    }
+    public void UnlockRooftops() {
+        if (gameEvents.GetAgilityLevel() >=20) {
+            alKharidButton.SetActive(true);
+        }
+
+        if (gameEvents.GetAgilityLevel() >=30) {
+            varrockButton.SetActive(true);
+        }
+        
+        if (gameEvents.GetAgilityLevel() >=40) {
+            canifisButton.SetActive(true);
+        }
+
+        if (gameEvents.GetAgilityLevel() >=50) {
+            faladorButton.SetActive(true);
+        }
+
+        if (gameEvents.GetAgilityLevel() >=60) {
+            seersButton.SetActive(true);
+        }
+
+        if (gameEvents.GetAgilityLevel() >=70) {
+            pollnivButton.SetActive(true);
+        }
+
+        if (gameEvents.GetAgilityLevel() >=80) {
+            rellekkaButton.SetActive(true);
+        }
+
+        if (gameEvents.GetAgilityLevel() >=90) {
+            ardougneButton.SetActive(true);
+        }
     }
 
-    // public void CopperClicked()
-    // {
-    //     gameEvents.AddMiningXP(17.5f);
-    // }
+    public void draynorClicked()
+    {
+        gameEvents.AddAgilityXP(120f);
+    }
 
+    public void alKharidClicked()
+    {
+        gameEvents.AddAgilityXP(216f);
+    }
+
+    public void varrockClicked()
+    {
+        gameEvents.AddAgilityXP(240f);
+    }
+
+    public void canifisClicked()
+    {
+        gameEvents.AddAgilityXP(270f);
+    }
+
+    public void faladorClicked()
+    {
+        gameEvents.AddAgilityXP(570f);
+    }
+
+    public void seersClicked()
+    {
+        gameEvents.AddAgilityXP(586f);
+    }
+
+    public void pollnivClicked()
+    {
+        gameEvents.AddAgilityXP(890f);
+    }
+
+    public void rellekkaClicked()
+    {
+        gameEvents.AddAgilityXP(920f);
+    }
+
+    public void ardougneClicked()
+    {
+        gameEvents.AddAgilityXP(960f);
+    }
     
 }

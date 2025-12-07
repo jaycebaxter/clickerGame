@@ -1,3 +1,10 @@
+// Program: OSRS Clicker
+// Author: Jayce Baxter-Johnson
+// Date: December 7th, 2025
+// Description: Allows the user to play a cookie clicker style game
+//              based on Oldschool Runescape, with 3 skills to train:
+//              Mining, Woodcutting, and Agility.
+
 using UnityEngine;
 
 public class Mining : MonoBehaviour
@@ -26,12 +33,14 @@ public class Mining : MonoBehaviour
     public Agility agility;
     public Woodcutting woodcutting;
 
+    // Reset / default state
     public void Start() {
         HideOres();
         agility.HideRooftops();
         woodcutting.HideTrees();
     }
 
+    // Shows mining UI and hides UI from other skills
     public void ShowOres() {
         copperButton.SetActive(true);
         GEImage.SetActive(false);
@@ -43,6 +52,7 @@ public class Mining : MonoBehaviour
         UnlockOres();
     }
 
+    // Hides all ores, used for woodcutting and agility
     public void HideOres() {
         copperButton.SetActive(false);
         ironButton.SetActive(false);
@@ -55,6 +65,7 @@ public class Mining : MonoBehaviour
         amethystButton.SetActive(false);
     }
 
+    // Unlocks ores based on mining level
     public void UnlockOres() {
     if (gameEvents.GetMiningLevel() >=15) {
         ironButton.SetActive(true);
@@ -89,6 +100,7 @@ public class Mining : MonoBehaviour
     }
     }
 
+    // Adds xp based on ore mined
     public void CopperClicked()
     {
         gameEvents.AddMiningXP(17.5f);

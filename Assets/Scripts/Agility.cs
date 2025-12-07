@@ -1,3 +1,10 @@
+// Program: OSRS Clicker
+// Author: Jayce Baxter-Johnson
+// Date: December 7th, 2025
+// Description: Allows the user to play a cookie clicker style game
+//              based on Oldschool Runescape, with 3 skills to train:
+//              Mining, Woodcutting, and Agility.
+
 using UnityEngine;
 
 public class Agility : MonoBehaviour
@@ -26,12 +33,14 @@ public class Agility : MonoBehaviour
     public Mining mining;
     public Woodcutting woodcutting;
 
+    // Reset / default state
     public void Start() {
         HideRooftops();
         mining.HideOres();
         woodcutting.HideTrees();
     }
 
+    // Shows agility UI and hides UI from other skills
     public void ShowRooftops() {
         GEImage.SetActive(false);
         miningImage.SetActive(false);
@@ -43,6 +52,7 @@ public class Agility : MonoBehaviour
         UnlockRooftops();
     }
 
+    // Hides all rooftops, used for woodcutting and mining
     public void HideRooftops() {
         draynorButton.SetActive(false);
         alKharidButton.SetActive(false);
@@ -55,7 +65,7 @@ public class Agility : MonoBehaviour
         ardougneButton.SetActive(false);
     }
 
-
+    // Unlocks rooftops based on agility level
     public void UnlockRooftops() {
         if (gameEvents.GetAgilityLevel() >=20) {
             alKharidButton.SetActive(true);
@@ -90,6 +100,7 @@ public class Agility : MonoBehaviour
         }
     }
 
+    // Adds xp based on rooftop lap run
     public void draynorClicked()
     {
         gameEvents.AddAgilityXP(120f);
